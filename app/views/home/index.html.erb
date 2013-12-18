@@ -1,9 +1,17 @@
 <% @js_directive = "ng-controller='PhoneListCtrl'"%>
 
 <input ng-model='query' />
+<select ng-model='orderProp'>
+  <option value='name'>Alphabetical</option>
+  <option value='age'>Newest</option>
+  <option value='-age'>Oldest</option>
+</select>
 
 <ul>
-  <li ng-repeat='phone in phones | filter:query'>
+  <li ng-repeat='phone in phones | filter:query | orderBy:orderProp'>
+  <a href="#/phone/{{ phone.id }}">
+    <img ng-src="{{phone.image}}" />
+  </a>
     {{ phone.name  }}
     <p>{{ phone.snippet  }}</p>
   </li>

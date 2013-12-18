@@ -3,12 +3,11 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 @phonecatApp = angular.module('phonecatApp', [])
-@phonecatApp.controller('PhoneListCtrl',
-  ($scope) ->
-    $scope.phones = [
-      {'name': 'Nexus S', 'snippet': 'Fast just got faster with Nexus S.'},
-      {'name': 'Motorola XOOM™ with Wi-Fi', 'snippet': 'The Next, Next Generation tablet.'},
-      {'name': 'MOTOROLA XOOM™', 'snippet': 'The Next, Next Generation tablet.'}
-    ]
-    $scope.hello = "Hello world"
-)
+@phonecatApp.controller('PhoneListCtrl', ['$scope', '$http',
+  ($scope, $http) ->
+    $http.get('/phone/list').success(
+      (data) ->
+        $scope.phones = data 
+    )
+    $scope.orderProp = 'age'
+])
