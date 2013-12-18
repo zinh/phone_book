@@ -1,3 +1,4 @@
 AngularTest::Application.routes.draw do
-  get 'index' => 'home#index'
+  get "phone/list" => "phone#list"
+  get "index" => "home#index"
 end
