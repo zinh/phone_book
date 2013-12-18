@@ -1,0 +1,12 @@
+<% @js_directive = "ng-controller='PhoneListCtrl'"%>
+
+<input ng-model='query' />
+
+<ul>
+  <li ng-repeat='phone in phones | filter:query'>
+    {{ phone.name  }}
+    <p>{{ phone.snippet  }}</p>
+  </li>
+</ul>
+Total phones: {{ phones.length  }}
+Current query: {{ query }}
